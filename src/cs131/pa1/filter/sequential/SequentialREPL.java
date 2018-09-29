@@ -1,8 +1,7 @@
 package cs131.pa1.filter.sequential;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 import cs131.pa1.filter.Message;
-
+import java.lang.Object;
 public class SequentialREPL {
 
 	static String currentWorkingDirectory;
@@ -15,10 +14,9 @@ public class SequentialREPL {
 			System.out.print(Message.NEWCOMMAND.toString());
 			Scanner sc = new Scanner(System.in);
 			String rawInput = sc.nextLine();
-			ArrayList<String> input = new ArrayList<String>();
-			for(String S: rawInput.split(" ")) {
-				input.add(S);
-			}
+			SequentialCommandBuilder.createFiltersFromCommand(rawInput);
+			
+			//Input is now a ArrayList of strings, feed it to sequential command builder
 			//Send input to somewhere it's a linked list of strings
 		} while (!shouldExit) ;
 		
