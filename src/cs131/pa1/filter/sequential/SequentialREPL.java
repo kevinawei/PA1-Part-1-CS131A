@@ -20,7 +20,7 @@ public class SequentialREPL {
 				input.add(S);
 			}
 			//Send input to somewhere it's a linked list of strings
-		} while (!shouldhExit) ;
+		} while (!shouldExit) ;
 		
 	}
 
