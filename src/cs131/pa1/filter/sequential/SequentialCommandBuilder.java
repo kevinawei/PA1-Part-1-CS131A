@@ -71,7 +71,7 @@ public class SequentialCommandBuilder {
 			return u;
 		}
 		if(subCommand.contains("wc")) {
-			WCFilter wc = new WCFilter();
+			WcFilter wc = new WCFilter();
 			return wc;
 		}
 		if(subCommand.contains(">")) {
