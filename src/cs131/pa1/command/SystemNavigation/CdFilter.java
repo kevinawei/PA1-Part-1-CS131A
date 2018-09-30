@@ -13,11 +13,17 @@ public class CdFilter extends SequentialFilter {
 	protected String processLine(String line) {
 		String cwd = System.getProperty("user.dir");
 		int slash = cwd.indexOf("\\", -1);
-		String dots = cwd.substring(0, slash);
+		String dots = line.substring(0, slash);
+		String afterDots = line.substring(slash, line.length()-1);
 		if (dots == "..") {
-			
-		} else if (dots == ".") {
-			
+			int endIndex = cwd.lastIndexOf("/");
+		    if (endIndex != -1)  
+		    {
+		        cwd = cwd.substring(0, endIndex);
+		    }
+		    System.setProperty("user.dir",  cwd + afterDots);
+		} else {
+			System.setProperty("user.dir",  cwd + afterDots);			
 		}
 		
 		return null;
