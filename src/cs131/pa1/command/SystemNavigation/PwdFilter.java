@@ -4,12 +4,21 @@ import cs131.pa1.filter.sequential.SequentialFilter;
 
 public class PwdFilter extends SequentialFilter {
 	protected String processLine(String worthless) {
-		String path = FileSystems.getDefault().getPath(".").toString();
-		return path;
+		return null;
 	}
+	boolean donezo = false;
+	
 	@Override
 	public void process(){
-		return;	
+		String path = FileSystems.getDefault().getPath(".").toString();
+		output.add(path);
+		donezo = true;
+		return;
+	}
+	
+	@Override
+	public boolean isDone() {
+		return donezo;
 	}
 }
 

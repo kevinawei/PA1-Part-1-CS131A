@@ -71,12 +71,13 @@ public class SequentialCommandBuilder {
 		if(subCommand.contains("cat")) {
 			String[] parts = subCommand.split(" ");
 			if (parts.length == 1) {
-				System.out.println(Message.REQUIRES_PARAMETER.toString());
+				System.out.println(Message.REQUIRES_PARAMETER.with_parameter("CAT"));
 				return null;
 			}
 			else {
-			CatFilter c = new CatFilter(parts[1]);
-			return c;
+				String[] files = Arrays.copyOfRange(parts, 1, (parts.length -1));
+				CatFilter c = new CatFilter(files);
+				return c;
 			}
 		}
 		if(subCommand.contains("grep")) {
