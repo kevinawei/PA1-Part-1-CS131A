@@ -11,7 +11,7 @@ public class PwdFilter extends SequentialFilter {
 	@Override
 	public void process(){
 		String path = FileSystems.getDefault().getPath(".").toString();
-		output.add(path);
+		this.output.add(path);
 		donezo = true;
 		return;
 	}

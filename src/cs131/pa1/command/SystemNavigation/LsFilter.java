@@ -16,7 +16,7 @@ public class LsFilter extends SequentialFilter {
 	public void process(){
 			File f = new File("."); // current directory
 			String files = f.listFiles().toString();
-			output.add(files);
+			this.output.add(files);
 			donezo = true;
 			return;
 	}
