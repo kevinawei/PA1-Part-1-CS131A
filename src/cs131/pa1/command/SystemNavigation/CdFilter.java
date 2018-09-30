@@ -11,7 +11,15 @@ public class CdFilter extends SequentialFilter {
 
 	@Override
 	protected String processLine(String line) {
-		// TODO Auto-generated method stub
+		String cwd = System.getProperty("user.dir");
+		int slash = cwd.indexOf("\\", -1);
+		String dots = cwd.substring(0, slash);
+		if (dots == "..") {
+			
+		} else if (dots == ".") {
+			
+		}
+		
 		return null;
 	}
 }

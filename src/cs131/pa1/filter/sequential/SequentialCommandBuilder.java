@@ -5,6 +5,7 @@ import java.util.List;
 
 import cs131.pa1.filter.Message;
 import cs131.pa1.command.textmanip.*;
+import cs131.pa1.command.SystemNavigation.CdFilter;
 import cs131.pa1.command.SystemNavigation.LsFilter;
 import cs131.pa1.command.SystemNavigation.PwdFilter;
 import cs131.pa1.command.general.*;
@@ -96,7 +97,7 @@ public class SequentialCommandBuilder {
 			return u;
 		}
 		if(subCommand.contains("wc")) {
-			WCFilter wc = new WCFilter();
+			WcFilter wc = new WcFilter();
 			return wc;
 		}
 		if(subCommand.contains(">")) {
