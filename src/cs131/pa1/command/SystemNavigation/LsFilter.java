@@ -9,7 +9,6 @@ public class LsFilter extends SequentialFilter {
 		File f = new File("."); // current directory
 		String files = f.listFiles().toString();
 		return files;
-		
 	}
 
 

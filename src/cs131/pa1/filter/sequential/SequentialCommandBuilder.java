@@ -95,11 +95,7 @@ public class SequentialCommandBuilder {
 			return u;
 		}
 		if(subCommand.contains("wc")) {
-<<<<<<< HEAD
-			WcFilter wc = new WcFilter();
-=======
 			WCFilter wc = new WCFilter();
->>>>>>> refs/remotes/origin/master
 			return wc;
 		}
 		if(subCommand.contains(">")) {
