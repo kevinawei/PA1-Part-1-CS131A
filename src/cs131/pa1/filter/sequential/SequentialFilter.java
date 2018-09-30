@@ -6,7 +6,7 @@ import cs131.pa1.filter.Filter;
 
 
 public abstract class SequentialFilter extends Filter {
-	
+	public Static String type;
 	protected Queue<String> input;
 	protected Queue<String> output;
 	
