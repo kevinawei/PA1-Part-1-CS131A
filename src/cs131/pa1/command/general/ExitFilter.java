@@ -4,7 +4,7 @@ import cs131.pa1.filter.Message;
 import cs131.pa1.filter.sequential.*;
 
 public class ExitFilter extends SequentialFilter {
-	
+	public String type = "exit;
 	@Override
 	public void process() {
 		System.out.println(Message.GOODBYE);
