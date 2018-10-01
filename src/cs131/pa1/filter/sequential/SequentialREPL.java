@@ -18,7 +18,6 @@ public class SequentialREPL {
 			
 			if (commands == null){
 				System.out.println(Message.GOODBYE.toString());
-				sc.close();
 			}
 			for (SequentialFilter sf: commands) {
 				sf.process();		
