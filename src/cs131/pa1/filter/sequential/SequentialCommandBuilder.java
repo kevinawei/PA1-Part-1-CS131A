@@ -162,7 +162,6 @@ public class SequentialCommandBuilder {
 				second = filters.get(i+1);
 			}
 			first.setNextFilter(second);
-			second.setPrevFilter(first);
 		}
 		return true;
 	}
