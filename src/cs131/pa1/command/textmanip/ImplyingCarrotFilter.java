@@ -7,9 +7,11 @@ import cs131.pa1.filter.Message;
 import cs131.pa1.filter.sequential.SequentialFilter;
 
 public class ImplyingCarrotFilter extends SequentialFilter {
+	
+	
 		
 
-	protected String processLine(String line){
+	public String processLine(String line){
 		File f = new File(line);
 		try {
 			if (f.exists())	{
