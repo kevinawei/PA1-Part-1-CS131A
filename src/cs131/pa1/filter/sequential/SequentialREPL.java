@@ -17,7 +17,7 @@ public class SequentialREPL {
 			
 			
 			if (commands == null){
-				System.out.println(Message.GOODBYE.toString());
+				System.out.println(Message.COMMAND_NOT_FOUND.toString());
 				return;
 			}
 			for (SequentialFilter sf: commands) {
