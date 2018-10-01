@@ -18,35 +18,31 @@ public class SequentialCommandBuilder {
 	
 	public static List<SequentialFilter> createFiltersFromCommand(String command){
 		
-		if (command.contains(PIPE)){
-			String[] commands = command.split(PIPE);
-		
-			for(int i = 0; i < commands.length ;i++) {
-				fList.add(constructFilterFromSubCommand(commands[i]));
-			}
-			if (!linkFilters(fList)) {
-				SequentialREPL.shouldExit = true;
+		if (!command.isEmpty()) {
+			String newCom = adjustCommandToRemoveFinalFilter(command);
+			if (newCom == null) {
 				return null;
 			}
-			return fList;
-		} 
-		else {
-			fList.add(constructFilterFromSubCommand(command));
-			return fList;
-		}
-		
-	
-	}
-	
-	private static SequentialFilter determineFinalFilter(String command){
-		if (command.contains(">")) {
-			String[] output = command.split(">");
-				if (output.length > 1) {
-					return new ImplyingCarrotFilter();
-				} else {
-					System.out.printf(Message.REQUIRES_PARAMETER.toString(), command);
+			if (newCom.contains(PIPE)){
+				String[] commands = newCom.split(PIPE);
+				
+				for(int i = 0; i < commands.length ;i++) {
+					if (constructFilterFromSubCommand(commands[i]) == null) {
+						System.out.println(Message.COMMAND_NOT_FOUND.toString());
+						return null;
+					}
+					fList.add(constructFilterFromSubCommand(commands[i]));
+				}
+				if (!linkFilters(fList)) {
+					SequentialREPL.shouldExit = true;
 					return null;
 				}
+				return fList;
+			} 
+			else {
+				fList.add(constructFilterFromSubCommand(newCom));
+				return fList;
+			}
 		}
 		return null;
 	}
