@@ -26,6 +26,11 @@ public class SequentialREPL {
 			sc.close();
 		} while (!shouldExit);
 		System.out.println(Message.GOODBYE.toString());
+		extracted();
+		return;
+	}
+
+	private static void extracted() {
 		return;
 	}
 

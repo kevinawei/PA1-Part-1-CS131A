@@ -88,15 +88,15 @@ public class SequentialCommandBuilder {
 			System.out.println(Message.COMMAND_NOT_FOUND.toString());
 			return null;
 		}
-		if(subCommand.contains("pwd")) {
+		if(subCommand.startsWith("pwd")) {
 			PwdFilter p = new PwdFilter();
 			return p;
 		}
-		if(subCommand.contains("ls")) {
+		if(subCommand.startsWith("ls")) {
 			LsFilter l = new LsFilter();
 			return l;
 		}
-		if(subCommand.contains("cd")) {
+		if(subCommand.startsWith("cd")) {
 			String[] parts = subCommand.split(" ");
 			if (parts.length == 1) {
 				System.out.printf(Message.REQUIRES_PARAMETER.with_parameter("cd"));
@@ -105,7 +105,7 @@ public class SequentialCommandBuilder {
 			CdFilter cd = new CdFilter();
 			return cd;
 		}
-		if(subCommand.contains("cat")) {
+		if(subCommand.startsWith("cat")) {
 			String[] parts = subCommand.split(" ");
 			if (parts.length == 1) {
 				System.out.println(Message.REQUIRES_PARAMETER.with_parameter("cat"));
@@ -116,7 +116,7 @@ public class SequentialCommandBuilder {
 				return c;
 			}
 		}
-		if(subCommand.contains("grep")) {
+		if(subCommand.startsWith("grep")) {
 			String[] parts = subCommand.split(" ");
 			if (parts.length == 1) {
 				System.out.println(Message.REQUIRES_PARAMETER.with_parameter("grep"));

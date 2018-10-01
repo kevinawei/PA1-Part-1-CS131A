@@ -32,8 +32,7 @@ public class CatFilter extends SequentialFilter {
 			    	} 
 			    	reader.close();
 				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					System.out.println(Message.INVALID_PARAMETER.with_parameter("CAT"));
 				}				
 		    	
 			} else	{
