@@ -7,7 +7,6 @@ public class SequentialREPL {
 	public static boolean shouldExit;
 	
 	public static void main(String[] args){
-		shouldExit = false;
 		System.out.println(Message.WELCOME.toString());
 		do {
 			System.out.print(Message.NEWCOMMAND.toString());

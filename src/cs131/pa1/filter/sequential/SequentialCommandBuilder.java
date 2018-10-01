@@ -154,10 +154,7 @@ public class SequentialCommandBuilder {
 	}
 
 	private static boolean linkFilters(List<SequentialFilter> filters){
-		if (T.contains(filters.get(0).type)) {
-			System.out.println(Message.REQUIRES_INPUT.toString());
-			return false;
-		}
+
 		for (int i =0; i< filters.size(); i++) {
 			SequentialFilter first = filters.get(i);
 			SequentialFilter second = null;
@@ -165,6 +162,7 @@ public class SequentialCommandBuilder {
 				second = filters.get(i+1);
 			}
 			first.setNextFilter(second);
+			second.setPrevFilter(first);
 		}
 		return true;
 	}
