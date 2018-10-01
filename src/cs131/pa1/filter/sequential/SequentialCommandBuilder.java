@@ -1,6 +1,5 @@
 package cs131.pa1.filter.sequential;
 
-import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.List;
 
