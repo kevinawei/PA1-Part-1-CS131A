@@ -39,6 +39,15 @@ public class SequentialCommandBuilder {
 	}
 	
 	private static SequentialFilter determineFinalFilter(String command){
+		if (command.contains(">")) {
+			String[] output = command.split(">");
+				if (output.length > 1) {
+					return new ImplyingCarrotFilter();
+				} else {
+					System.out.printf(Message.REQUIRES_PARAMETER.toString(), command);
+					return null;
+				}
+		}
 		return null;
 	}
 	
