@@ -14,14 +14,18 @@ public class SequentialREPL {
 			Scanner sc = new Scanner(System.in);
 			String rawInput = sc.nextLine();
 			List<SequentialFilter> commands = SequentialCommandBuilder.createFiltersFromCommand(rawInput);
-			sc.close();
 			
+			
+			if (commands = null){
+				System.out.println(Message.GOODBYE.toString());
+				sc.close();
+			}
 			for (SequentialFilter sf: commands) {
 				sf.process();		
 			}
 		} while (!shouldExit) ;
 		System.out.println(Message.GOODBYE.toString());
-		
+		sc.close();
 	}
 
 }
