@@ -94,7 +94,7 @@ public class SequentialCommandBuilder {
 		if(subCommand.contains("cd")) {
 			String[] parts = subCommand.split(" ");
 			if (parts.length == 1) {
-				System.out.println(Message.REQUIRES_PARAMETER.toString());
+				System.out.printf(Message.REQUIRES_PARAMETER.toString().with_parameter("cd"));
 				return null;
 			}
 			CdFilter cd = new CdFilter();
@@ -103,7 +103,7 @@ public class SequentialCommandBuilder {
 		if(subCommand.contains("cat")) {
 			String[] parts = subCommand.split(" ");
 			if (parts.length == 1) {
-				System.out.println(Message.REQUIRES_PARAMETER.with_parameter("CAT"));
+				System.out.println(Message.REQUIRES_PARAMETER.with_parameter("cat"));
 				return null;
 			}
 			else {
@@ -115,7 +115,7 @@ public class SequentialCommandBuilder {
 		if(subCommand.contains("grep")) {
 			String[] parts = subCommand.split(" ");
 			if (parts.length == 1) {
-				System.out.println(Message.REQUIRES_PARAMETER.toString());
+				System.out.println(Message.REQUIRES_PARAMETER.toString().with_parameter("grep"));
 				return null;
 			}
 			GrepFilter g = new GrepFilter();
