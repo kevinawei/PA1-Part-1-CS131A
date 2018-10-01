@@ -87,7 +87,7 @@ public class SequentialCommandBuilder {
 		if(!C.parallelStream().anyMatch(subCommand::contains)) {
 			System.out.println(Message.COMMAND_NOT_FOUND.toString());
 			return null;
-		}
+		} 
 		if(subCommand.startsWith("pwd")) {
 			PwdFilter p = new PwdFilter();
 			return p;
