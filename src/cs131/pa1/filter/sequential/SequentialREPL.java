@@ -18,14 +18,15 @@ public class SequentialREPL {
 			
 			if (commands == null){
 				System.out.println(Message.GOODBYE.toString());
+				return;
 			}
 			for (SequentialFilter sf: commands) {
 				sf.process();		
 			}
 			sc.close();
-		} while (!shouldExit) ;
+		} while (!shouldExit);
 		System.out.println(Message.GOODBYE.toString());
-		
+		return;
 	}
 
 }
