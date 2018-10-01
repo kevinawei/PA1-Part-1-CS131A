@@ -10,7 +10,7 @@ public class CdFilter extends SequentialFilter {
 	}
 
 	@Override
-	protected String processLine(String line) {
+	public String processLine(String line) {
 		String cwd = System.getProperty("user.dir");
 		int slash = cwd.indexOf("\\", -1);
 		String dots = line.substring(0, slash);
