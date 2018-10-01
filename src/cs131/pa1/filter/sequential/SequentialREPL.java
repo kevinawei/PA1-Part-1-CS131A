@@ -16,16 +16,17 @@ public class SequentialREPL {
 			List<SequentialFilter> commands = SequentialCommandBuilder.createFiltersFromCommand(rawInput);
 			
 			
-			if (commands = null){
+			if (commands == null){
 				System.out.println(Message.GOODBYE.toString());
 				sc.close();
 			}
 			for (SequentialFilter sf: commands) {
 				sf.process();		
 			}
+			sc.close();
 		} while (!shouldExit) ;
 		System.out.println(Message.GOODBYE.toString());
-		sc.close();
+		
 	}
 
 }
