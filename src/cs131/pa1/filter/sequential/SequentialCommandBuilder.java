@@ -43,7 +43,38 @@ public class SequentialCommandBuilder {
 	}
 	
 	private static String adjustCommandToRemoveFinalFilter(String command){
-		return null;
+		if (!command.contains(">")) {
+			return command;
+		} 
+		else {
+			String[] checkFilter = command.split(">");
+			String badCom;
+			
+			if(command.indexOf(">") == 0) {
+				System.out.printf(Message.REQUIRES_INPUT.toString(), command);
+				return null;
+				} 
+			else if (command.indexOf(">") == command.length()-1) {
+				System.out.printf(Message.REQUIRES_PARAMETER.toString(), ">");
+				return null;
+			} 
+			else if (checkFilter.length>2) {
+				System.out.printf(Message.CANNOT_HAVE_OUTPUT.toString(), checkFilter[0].trim());
+				return null;
+			} 
+			else if (checkFilter.length == 2 && checkFilter[1].contains("|")) {
+				if (checkFilter[0].contains("|")) {
+					badCom = checkFilter[0].substring(checkFilter[0].lastIndexOf('|')).trim();
+				} else {
+					badCom = "> "+checkFilter[1].substring(0,checkFilter[1].indexOf('|')).trim();
+				}
+				
+				System.out.printf(Message.CANNOT_HAVE_OUTPUT.toString(), badCom);
+				return null;
+			}
+			
+			return checkFilter[0].trim();
+		}
 	}
 	
 	private static SequentialFilter constructFilterFromSubCommand(String subCommand){
