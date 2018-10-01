@@ -47,7 +47,7 @@ public class SequentialCommandBuilder {
 		return null;
 	}
 	
-	private static SequentialFilter constructFilterFromSubCommand(String subCommand) throws FileNotFoundException{
+	private static SequentialFilter constructFilterFromSubCommand(String subCommand){
 		
 		if(!C.parallelStream().anyMatch(subCommand::contains)) {
 			System.out.println(Message.COMMAND_NOT_FOUND.toString());
@@ -55,12 +55,10 @@ public class SequentialCommandBuilder {
 		}
 		if(subCommand.contains("pwd")) {
 			PwdFilter p = new PwdFilter();
-			p.process();
 			return p;
 		}
 		if(subCommand.contains("ls")) {
 			LsFilter l = new LsFilter();
-			l.process();
 			return l;
 		}
 		if(subCommand.contains("cd")) {
@@ -70,7 +68,6 @@ public class SequentialCommandBuilder {
 				return null;
 			}
 			CdFilter cd = new CdFilter();
-			cd.processLine(parts[1]);
 			return cd;
 		}
 		if(subCommand.contains("cat")) {
@@ -81,7 +78,7 @@ public class SequentialCommandBuilder {
 			}
 			else {
 				String[] files = Arrays.copyOfRange(parts, 1, (parts.length -1));
-				CatFilter c = new CatFilter(files);
+				CatFilter c = new CatFilter();
 				return c;
 			}
 		}
@@ -111,7 +108,6 @@ public class SequentialCommandBuilder {
 				return null;
 			}
 			ImplyingCarrotFilter icf = new ImplyingCarrotFilter();
-			icf.processLine(parts[1]);
 			return icf;
 		}
 		if(subCommand.contains("exit")) {

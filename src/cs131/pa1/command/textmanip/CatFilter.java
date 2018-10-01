@@ -10,24 +10,6 @@ import cs131.pa1.filter.sequential.SequentialFilter;
 public class CatFilter extends SequentialFilter {
 	boolean donezo = false;
 	
-	public CatFilter(String[] files) throws FileNotFoundException{
-		int count = 0;
-		do {
-			File f = new File(files[count]);
-		    if(f.isFile()){
-		    	Scanner reader = new Scanner(f);				
-		    	while (reader.hasNextLine())
-		    	{
-		    	   this.output.add(reader.nextLine());
-		    	} 
-		    	reader.close();
-			} else	{
-				System.out.println(Message.INVALID_PARAMETER.with_parameter("CAT"));
-			}	
-		    count ++;
-		} while (count<files.length);
-		donezo = true;
-	}
 	
 	@Override
 	public boolean isDone() {
@@ -37,7 +19,29 @@ public class CatFilter extends SequentialFilter {
 	
 	@Override
 	protected String processLine(String line) {
-		// TODO Auto-generated method stub
+		int count = 0;
+		do {
+			File f = new File(line);
+		    if(f.isFile()){
+		    	Scanner reader;
+				try {
+					reader = new Scanner(f);
+					while (reader.hasNextLine())
+			    	{
+			    	   this.output.add(reader.nextLine());
+			    	} 
+			    	reader.close();
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}				
+		    	
+			} else	{
+				System.out.println(Message.INVALID_PARAMETER.with_parameter("CAT"));
+			}	
+		    count ++;
+		} while (count<line.length());
+		donezo = true;
 		return null;
 	}
 	
