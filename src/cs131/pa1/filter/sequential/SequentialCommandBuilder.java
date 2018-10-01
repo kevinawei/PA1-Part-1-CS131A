@@ -94,7 +94,7 @@ public class SequentialCommandBuilder {
 		if(subCommand.contains("cd")) {
 			String[] parts = subCommand.split(" ");
 			if (parts.length == 1) {
-				System.out.printf(Message.REQUIRES_PARAMETER.toString().with_parameter("cd"));
+				System.out.printf(Message.REQUIRES_PARAMETER.with_parameter("cd"));
 				return null;
 			}
 			CdFilter cd = new CdFilter();
@@ -107,7 +107,6 @@ public class SequentialCommandBuilder {
 				return null;
 			}
 			else {
-				String[] files = Arrays.copyOfRange(parts, 1, (parts.length -1));
 				CatFilter c = new CatFilter();
 				return c;
 			}
@@ -115,7 +114,7 @@ public class SequentialCommandBuilder {
 		if(subCommand.contains("grep")) {
 			String[] parts = subCommand.split(" ");
 			if (parts.length == 1) {
-				System.out.println(Message.REQUIRES_PARAMETER.toString().with_parameter("grep"));
+				System.out.println(Message.REQUIRES_PARAMETER.with_parameter("grep"));
 				return null;
 			}
 			GrepFilter g = new GrepFilter();
@@ -134,7 +133,7 @@ public class SequentialCommandBuilder {
 		if(subCommand.contains(">")) {
 			String[] parts = subCommand.split(" ");
 			if (parts.length == 1) {
-				System.out.println(Message.REQUIRES_PARAMETER.toString());
+				System.out.println(Message.REQUIRES_PARAMETER.with_parameter(">"));
 				return null;
 			}
 			ImplyingCarrotFilter icf = new ImplyingCarrotFilter();
